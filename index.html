@@ -13,7 +13,6 @@
     <header>
         <nav class="sticky_menu">
             <ul>
-                <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about_me" class="nav-link">Über mich</a></li>
                 <li><a href="#about_seelen_atelier" class="nav-link">Über das Seelen-Atelier</a></li>
                 <li><a href="#workshops" class="nav-link">Workshops & Retreats</a></li>
@@ -21,9 +20,6 @@
         </nav>
     </header>
     <main>
-        <section class="home content-section" id="home">
-            home
-        </section>
         <section class="about_me content-section" id="about_me">
             about me
         </section>
@@ -31,11 +27,32 @@
             about seelen-atelier
         </section>
         <section class="workshops content-section" id="workshops">
-            workshops & retreats
+            <div class="home_about_me">
+                <a href="#about_me" class="nav-link"><img src="main/home/about_me.jpeg" alt=""></a>
+            </div>
+            <div class="home_about_seelen_atelier">
+                <a href="#about_seelen_atelier" class="nav-link"><img src="main/home/about_seelen_atelier.jpeg" alt=""></a>
+            </div>
+            <div class="home_workshops">
+                <a href="#workshops" class="nav-link"><img src="main/home/workshops.jpeg" alt=""></a>
+            </div>
         </section>
     </main>
     <footer>
-        this is the footer
+        <div class="name">
+            <p>Beatrix Ferriman</p>
+        </div>
+        <div class="mail">
+            <img src="footer/mail_icon.png" alt=""><a href="mailto:kontakt@beatrix-ferriman.at">kontakt@beatrix-ferriman.at</a>
+        </div>
+        <div class="social_media">
+            <a href="https://www.instagram.com/seelen_atelier" target="_blank" rel="noopener noreferrer"><img src="footer/instagram_logo.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/groups/seelenatelier" target="_blank" rel="noopener noreferrer"><img src="footer/facebook_logo.png" alt="Facebook"></a>
+        </div>
+        <div class="footer_links">
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+        </div>
     </footer>
     <script src="scripts/top_menu.js"></script>
 </body>
