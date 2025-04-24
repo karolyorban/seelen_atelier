@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     const contentSections = document.querySelectorAll('.content-section');
-    let isPopState = false; // Flag to track back/forward navigation
+    let isPopState = false;
 
     // Initialize history on first load
     if (!history.state) {
-        const initialSection = window.location.hash.substring(1) || 'workshops';
+        const initialSection = window.location.hash.substring(1) || 'workshops_section';
         history.replaceState({ section: initialSection }, '', `#${initialSection}`);
     }
 
-    // Function to show a section
     function showSection(targetId, addToHistory = true) {
         // Hide all sections
         contentSections.forEach(section => {
@@ -23,14 +22,30 @@ document.addEventListener('DOMContentLoaded', function() {
             targetSection.classList.add('active');
             targetSection.style.display = 'flex';
             
-            // Update history if this is a user action (not back/forward)
+            // Scroll to section, accounting for header height
+            const headerHeight = document.querySelector('header').offsetHeight;
+            window.scrollTo({
+                top: targetSection.offsetTop - headerHeight,
+                behavior: 'auto' // 'smooth' if you prefer
+            });
+            
             if (addToHistory && !isPopState) {
                 history.pushState({ section: targetId }, '', `#${targetId}`);
             }
         }
     }
 
-    // Handle link clicks
+    // Initial load handling
+    function handleInitialLoad() {
+        const targetId = history.state?.section || 'workshops_section';
+        showSection(targetId, false);
+        
+        // Force scroll to top if no hash in URL
+        if (!window.location.hash) {
+            window.scrollTo(0, 0);
+        }
+    }
+
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -39,14 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Handle back/forward navigation
     window.addEventListener('popstate', function(e) {
         isPopState = true;
-        const targetId = e.state?.section || 'workshops';
+        const targetId = e.state?.section || 'workshops_section';
         showSection(targetId, false);
         isPopState = false;
     });
 
-    // Initial load
-    showSection(history.state?.section || 'workshops', false);
+    // Use setTimeout to ensure DOM is fully ready
+    setTimeout(handleInitialLoad, 0);
 });

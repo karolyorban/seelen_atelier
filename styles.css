@@ -1,11 +1,21 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('mix/montserrat_n.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    cursor: url('mix/cursor.png'), default;
 }
 
 body {
     background-image: url('mix/page_bckgr.jpeg');
+    font-family: 'Montserrat', sans-serif;
 }
 
 header {
@@ -46,12 +56,12 @@ header {
 
 .sticky_menu a:hover {
     background-color: rgba(255, 255, 255, 0.3);
+    cursor: url('mix/pen.png'), default;
 }
 
 main {
-    position:relative;
-    top: 18.5vh;
-    
+    padding-top: 18.5vh;
+    padding-bottom: 14vh;
 }
 
 .content-section {
@@ -62,16 +72,12 @@ main {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-#home { 
-    animation: fadeIn 0.5s ease-in-out;
-}
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
-.home, .about_me, .about_seelen_atelier, .workshops {
+.about_me_section, .about_seelen_atelier_section, .workshops_section {
     position: relative;
     display: flex;
     justify-content: center;
@@ -80,30 +86,106 @@ main {
     margin: 0;
 }
 
-/* ------------------------------- STYLING OF WORKSHOPS START ---------------------------------------- */
+/* ------------------------------- STYLING OF WORKSHOPS_SECTION START ---------------------------------------- */
 
-.workshops > div {
+.workshops_section {
+    flex-direction: column;
+    align-items: center;
+}
+
+.workshops_section > div {
     margin-top: 5vh;
-    width: 30%;
+    width: 60%;
     padding: 6vh 2vh 6vh 2vh;
 }
 
-.workshops img {
-    width: 100%;
-    border-radius: 10px 50px 10px 50px;
-    box-shadow: 15px 20px 15px rgba(0, 0, 0, 0.5);
+.workshops {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
     transition: all 0.5s ease;
+    background-color: rgba(115, 79, 42, 0.9);
+    border-radius: 20px;
+}
+
+.workshops:hover {
+    transform: scale(1.05);
+    box-shadow: 15px 20px 15px rgba(0, 0, 0, 0.5);
+}
+
+.workshop_image {
+    position: relative;
+    flex: 1;
     opacity: 0.8;
 }
 
-.workshops img:hover {
-    transform: scale(1.05);
-    opacity: 1;
+.workshop_image img {
+    width: 100%;    
+    border-radius: 10px 50px 10px 50px;
     box-shadow: 15px 20px 15px rgba(0, 0, 0, 0.5);
-    cursor: default;
+    transition: all 0.5s ease;
+    transform: rotateZ(-4deg);
+    transform-origin: center center ;
+    
 }
 
-/* -------------------------------- STYLING OF WORKSHOPS END ----------------------------------------- */
+.workshop_image img:hover {
+    transform: scale(1.06) rotateZ(3deg);
+    cursor: url('mix/pen.png'), default;
+}
+
+.workshop_text {
+    position: relative;
+    flex: 2;
+    background-color: #dbceaa;
+    border-radius: 10px;
+    padding: 1vw;
+    opacity: 0.7;
+    box-shadow: 15px 20px 15px rgba(0, 0, 0, 0.5);
+}
+
+.workshop_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+.workshop_subtitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+
+.workshop_description {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.workshop_booking_text {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.book_workshop {
+    padding: 0.5rem 3rem;
+    width: fit-content;
+    font-size: 1.15rem;
+    display: block;
+    margin: auto;
+    border-radius: 7%;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgba(60, 110, 113, 0.7);
+    transition: all 0.3s ease;
+}
+
+.book_workshop:hover {
+    cursor: url('mix/pen.png'), default;
+    box-shadow: 4px 7px 10px grey;
+}
+
+
+
+/* -------------------------------- STYLING OF WORKSHOPS_SECTION END ----------------------------------------- */
 
 
 
@@ -137,7 +219,7 @@ main {
 footer {
     position: fixed;
     display: flex;
-    border-top: 3px solid white;
+    border-top: 2px solid black;
     align-items: center;
     padding: 0 2vw 0 2vw;
     justify-content: space-between;
@@ -159,6 +241,7 @@ footer a:hover {
 
 .mail > a:hover {
     transform: scale(1.04);
+    cursor: url('mix/pen.png'), default;
 }
 
 .social_media > a:hover {
@@ -196,3 +279,30 @@ footer img {
 .footer_links {
     gap: 1vw;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------------------------- MOBILE START --------------------------------------------- */
+
+/* ---------------------------------------------- MOBILE END ---------------------------------------------- */
