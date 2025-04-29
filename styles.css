@@ -14,7 +14,7 @@
 }
 
 body {
-    background-image: url('mix/page_bckgr.jpeg');
+    background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('mix/1b1f7811146e556b8e86a55370674bf4.png');
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -23,13 +23,29 @@ header {
     width: 100%;
     z-index: 10;
     height: 18.5vh;
-    background-image: url('header/banner.jpeg');
+    background: linear-gradient(to left, rgba(115, 80, 42, 1), rgba(71, 50, 27, 1));
+}
+
+.header_pics {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.header_pics > img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .sticky_menu {
-    margin-top: 18.5vh;
+    margin-top: -0.5vh;
     width: 100%;
-    background-color: rgba(185, 134, 81, 0.5);
+    background-color: rgba(185, 134, 81, 0.8);
 }
 
 .sticky_menu ul {
@@ -89,6 +105,7 @@ main {
 /* ------------------------------- STYLING OF WORKSHOPS_SECTION START ---------------------------------------- */
 
 .workshops_section {
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -109,7 +126,7 @@ main {
 }
 
 .workshops:hover {
-    transform: scale(1.05);
+    background-color: rgba(115, 79, 42, 1);
     box-shadow: 15px 20px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -120,7 +137,8 @@ main {
 }
 
 .workshop_image img {
-    width: 100%;    
+    width: 100%;
+    border: 2px solid #dbceaa;    
     border-radius: 10px 50px 10px 50px;
     box-shadow: 15px 20px 15px rgba(0, 0, 0, 0.5);
     transition: all 0.5s ease;
@@ -187,6 +205,57 @@ main {
 
 /* -------------------------------- STYLING OF WORKSHOPS_SECTION END ----------------------------------------- */
 
+/* -------------------------------- STYLING OF ABOUTME_SECTION START ----------------------------------------- */
+
+.about_me_section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3vw;
+    padding-top: 5vh;
+}
+
+.about_me_img_and_text {
+    display: flex;
+    width: 21vw;
+    height: auto;
+    position: relative;
+    overflow: visible;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.about_me_img {
+    width: 21vw;
+    height: 21vw;
+    object-fit: cover;
+    border: 3px solid #b98651;
+    border-radius: 50%;
+    box-shadow: 0 0 40px 15px rgba(185, 134, 81, 0.6);
+    animation: gentle-pulse 2s infinite alternate;
+}
+
+@keyframes gentle-pulse {
+    from { box-shadow: 0 0 15px 3px rgba(185, 134, 81, 0.5); }
+    to { box-shadow: 0 0 25px 8px rgba(185, 134, 81, 0.7); }
+}
+
+.about_me_title {
+    position: relative;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #dbceaa;
+}
+
+.about_me_description {
+    position: relative;
+    color: #dbceaa;
+    text-align: justify;
+}
+
+/* --------------------------------- STYLING OF ABOUTME_SECTION END ------------------------------------------ */
+
 
 
 
@@ -223,9 +292,9 @@ footer {
     align-items: center;
     padding: 0 2vw 0 2vw;
     justify-content: space-between;
-    top: 90vh;
+    top: 93vh;
     width: 100%;
-    height: 10vh;
+    height: 7vh;
     background-color: #b98651;
 }
 
@@ -256,7 +325,7 @@ footer > div {
     display: flex;
     align-items: center;
     height: 50%;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .mail {
