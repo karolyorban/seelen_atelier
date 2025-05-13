@@ -5,39 +5,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize history on first load
     if (!history.state) {
-        const initialSection = window.location.hash.substring(1) || 'workshops_section';
+        const initialSection = window.location.hash.substring(1) || 'home_section';
         history.replaceState({ section: initialSection }, '', `#${initialSection}`);
     }
 
     function showSection(targetId, addToHistory = true) {
-        // Hide all sections
+        // 1. FIRST, SCROLL TO TOP (before showing new section)
+        window.scrollTo({
+            top: 0,
+            behavior: 'auto' // Instant jump (use 'smooth' for animation)
+        });
+
+        // 2. Hide all sections
         contentSections.forEach(section => {
             section.classList.remove('active');
             section.style.display = 'none';
         });
 
-        // Show the target section
+        // 3. Show the target section
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
             targetSection.classList.add('active');
             targetSection.style.display = 'flex';
-            
-            // Scroll to section, accounting for header height
+
+            // 4. Optional: Scroll to section (after top jump)
             const headerHeight = document.querySelector('header').offsetHeight;
-            window.scrollTo({
-                top: targetSection.offsetTop - headerHeight,
-                behavior: 'auto' // 'smooth' if you prefer
-            });
-            
-            if (addToHistory && !isPopState) {
-                history.pushState({ section: targetId }, '', `#${targetId}`);
-            }
+            setTimeout(() => {
+                window.scrollTo({
+                    top: targetSection.offsetTop - headerHeight,
+                    behavior: 'auto' // Match your preference
+                });
+            }, 10); // Tiny delay to ensure top scroll completes
+        }
+
+        // 5. Update history
+        if (addToHistory && !isPopState) {
+            history.pushState({ section: targetId }, '', `#${targetId}`);
         }
     }
 
     // Initial load handling
     function handleInitialLoad() {
-        const targetId = history.state?.section || 'workshops_section';
+        const targetId = history.state?.section || 'home_section';
         showSection(targetId, false);
         
         // Force scroll to top if no hash in URL
@@ -56,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('popstate', function(e) {
         isPopState = true;
-        const targetId = e.state?.section || 'workshops_section';
+        const targetId = e.state?.section || 'home_section';
         showSection(targetId, false);
         isPopState = false;
     });
