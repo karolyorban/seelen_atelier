@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 1. FIRST, SCROLL TO TOP (before showing new section)
         window.scrollTo({
             top: 0,
-            behavior: 'auto' // Instant jump (use 'smooth' for animation)
+            behavior: 'auto'
         });
 
         // 2. Hide all sections
@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 window.scrollTo({
                     top: targetSection.offsetTop - headerHeight,
-                    behavior: 'auto' // Match your preference
+                    behavior: 'auto'
                 });
-            }, 10); // Tiny delay to ensure top scroll completes
+            }, 10);
         }
 
         // 5. Update history
@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Navigation link click handlers
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -63,11 +64,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Handle browser back/forward buttons
     window.addEventListener('popstate', function(e) {
         isPopState = true;
         const targetId = e.state?.section || 'home_section';
         showSection(targetId, false);
         isPopState = false;
+    });
+
+    // Add scroll detection for header line
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 5) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
 
     // Use setTimeout to ensure DOM is fully ready
