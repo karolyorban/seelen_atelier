@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
+    const contentLinks = document.querySelectorAll('.home_section a[href^="#"]'); // Select all anchor links in home section
     const contentSections = document.querySelectorAll('.content-section');
     let isPopState = false;
 
@@ -55,13 +56,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Navigation link click handlers
+    // Navigation link click handlers (both menu and content links)
+    function handleLinkClick(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        showSection(targetId);
+    }
+
+    // Add event listeners to menu links
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            showSection(targetId);
-        });
+        link.addEventListener('click', handleLinkClick);
+    });
+
+    // Add event listeners to content links in home section
+    contentLinks.forEach(link => {
+        // Only add if the link points to one of our sections
+        const targetId = link.getAttribute('href').substring(1);
+        if (document.getElementById(targetId)) {
+            link.addEventListener('click', handleLinkClick);
+        }
     });
 
     // Handle browser back/forward buttons

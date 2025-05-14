@@ -6,6 +6,13 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Nyoetes';
+    src: url('mix/Nyoetes.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -140,46 +147,80 @@ main {
     flex-direction: column;
     box-sizing: border-box;
     gap: 5vh; /* Space between text elements */
-    padding-top: 16vh;
+    padding-top: 6vh;
     padding-right: 1vw;
     padding-left: 4vw;
 }
 
 .additional_text {
     width: 100%;
-    padding: 2rem 4vw; /* Match horizontal padding with text_content */
+    padding: 0 4vw; /* Match horizontal padding with text_content */
     /* Add any other styling you want for the additional text */
 }
 
-h1 {
+.home_section h1 {
+    font-family: 'Nyoetes', sans-serif;
     font-size: 3rem;
     color: #b98651;
 }
 
-h2 {
+.home_section h2 {
     font-size: 1.8rem;
     color: #5a4126;
-    margin: 2rem 0;
+    margin-top: none;
+    margin-bottom: 3vh;
+}
+
+.home_section h3 {
+    font-size: 1.8rem;
+    color: #b98651;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.home_section p {
+    color: #5a4126;
+    line-height: 1.8rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.signature {
+    margin-top: 2rem;
+}
+
+.home_section a {
+    font-weight: bold;
+    color: #5a4126;
+    transition: all 0.3s ease;
+}
+
+.home_section a:hover {
+    color: #5a4126;
 }
 
 .cta {
-    align-self: flex-start; /* Align button to left */
+    display: inline-block; /* Required for anchor tags */
+    align-self: flex-start;
     padding: 0.75rem 1.5rem;
-    color: black;
+    color: white !important;
     font-size: 1.2rem;
-    background-color: #b98651;
+    background-color: #5a4126;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    text-decoration: none; /* Remove underline */
     box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
 
+/* Keep your existing hover effects */
 .cta:hover {
     transform: scale(1.01);
     box-shadow: 
-        0 0 10px 3px rgba(185, 134, 81, 0.7), /* Glow effect (color matches border) */
+        0 0 10px 3px rgba(185, 134, 81, 0.7),
         5px 8px 5px rgba(0, 0, 0, 0.5);
+    text-decoration: none; /* Ensure no underline appears */
 }
     
 .image_content {
@@ -317,6 +358,87 @@ h2 {
 
 /* -------------------------------- STYLING OF WORKSHOPS_SECTION END ----------------------------------------- */
 
+/* --------------------------------- STYLING OF SEELENATELIER START ------------------------------------------ */
+
+.about_seelen_atelier_section {
+    flex-direction: column;
+    padding: 12.5vh 13vw;
+}
+
+.seelen_text_with_pic {
+    display: flex;
+    gap: 3vw;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+.seelen_text {
+    flex: 2; /* Takes 3 parts of available space */
+    min-width: 0; /* Allows text to shrink if needed */
+}
+
+.seelen_pic {
+    flex: 1; /* Takes 1 part of available space */
+    max-width: 30%; /* Ensures image doesn't get too wide */
+}
+
+.seelen_pic img {
+    width: 100%; /* Make image responsive within its container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: adds rounded corners */
+    -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 10%,
+    rgba(0, 0, 0, 0.7) 20%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 1) 100%
+);
+mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 10%,
+    rgba(0, 0, 0, 0.7) 20%,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 1) 100%
+);
+}
+
+.about_seelen_atelier_section h1 {
+    font-family: 'Nyoetes', sans-serif;
+    font-size: 3rem;
+    color: #b98651;
+}
+
+.about_seelen_atelier_section h2 {
+    font-size: 1.8rem;
+    color: #b98651;
+    margin-bottom: -2rem;
+}
+
+.about_seelen_atelier_section h4 {
+    font-size: 1.5rem;
+    color: #5a4126;
+    margin-top: 2rem;
+}
+
+.about_seelen_atelier_section h3 {
+    font-size: 1.8rem;
+    color: #b98651;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about_seelen_atelier_section p {
+    color: #5a4126;
+    line-height: 1.8rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+/* ---------------------------------- STYLING OF SEELENATELIER END ------------------------------------------- */
+
 /* -------------------------------- STYLING OF ABOUTME_SECTION START ----------------------------------------- */
 
 .about_me_section {
@@ -368,7 +490,26 @@ h2 {
 
 /* --------------------------------- STYLING OF ABOUTME_SECTION END ------------------------------------------ */
 
+/* ----------------------------------- STYLING OF IMPRESSUM START -------------------------------------------- */
 
+.impressum {
+    display: flex;
+    flex-direction: column;
+    padding: 12.5vh 13vw;
+    line-height: 1.8rem;
+}
+
+.impressum h3 {
+    color: #b98651;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.impressum p {
+    color: #5a4126;
+}
+
+/* ------------------------------------ STYLING OF IMPRESSUM END --------------------------------------------- */
 
 
 
@@ -400,7 +541,7 @@ h2 {
 footer {
     position: fixed;
     display: flex;
-    border-top: 2px solid #b98651;
+    border-top: 1px solid #b98651;
     align-items: center;
     padding: 0 2vw 0 2vw;
     justify-content: space-between;
@@ -411,13 +552,14 @@ footer {
 }
 
 footer a {
-    color: black;
+    color: #5a4126;
+    font-weight: bold;
     text-decoration: none;
     transition: all 0.5s ease;
 }
 
 footer a:hover {
-    color: #dbceaa;
+    color: #291d10;
 }
 
 .mail > a:hover {
@@ -429,7 +571,7 @@ footer a:hover {
 }
 
 .footer_links > a:hover {
-    transform: scale(1.15);
+    transform: scale(1.05);
 }
 
 footer > div {
@@ -443,6 +585,11 @@ footer > div {
     gap: 1vw;
 }
 
+.name {
+    font-weight: bold;
+    color: #5a4126;
+}
+
 footer .social_media {
     gap: 1vw;
 }
@@ -454,6 +601,14 @@ footer .social_media a {
 
 footer img {
     height: 100%;
+    filter: 
+        brightness(0)      /* First make the image black */
+        sepia(100%)        /* Convert to sepia tone */
+        saturate(1000%)    /* Increase saturation */
+        hue-rotate(335deg) /* Adjust to match #734f2a */
+        brightness(0.9)    /* Fine-tune lightness */
+        contrast(1.1);     /* Slightly boost contrast */
+    transition: filter 0.3s ease;
 }
 
 .footer_links {
