@@ -508,7 +508,7 @@ mask-image: linear-gradient(
 }
 
 .about_me_intro_pic img {
-    width: 100%;
+    width: auto;
     height: 100%; /* Force fill container */
     object-fit: cover; /* Crop to fit (or 'contain' to show full image) */
     object-position: top;
