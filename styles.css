@@ -385,6 +385,122 @@ main {
     text-decoration: none; /* Ensure no underline appears */
 }
 
+/*slider start*/
+
+.testimonials-intro h3 {
+    font-size: 1.8rem;
+    color: #b98651;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Nyoetes', sans-serif;
+}
+
+.testimonials-intro p {
+    color: #5a4126;
+    line-height: 1.8rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.testimonials-slider-container {
+    margin-top: 60px;
+    padding: 40px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.testimonials-intro {
+    margin-bottom: 30px;
+}
+
+.testimonials-intro h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.testimonials-intro p {
+    font-size: 16px;
+    color: #666;
+}
+
+.testimonials-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.testimonials-container {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+}
+
+.testimonial {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.testimonial.active {
+    opacity: 1;
+}
+
+.testimonial blockquote {
+    font-size: 18px;
+    font-style: italic;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.testimonial-author {
+    font-size: 16px;
+    color: #666;
+}
+
+.slider-arrow {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.slider-arrow:hover {
+    color: #333;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #666;
+}
+/*slider end*/
+
 
 
 /* -------------------------------- STYLING OF WORKSHOPS_SECTION END ----------------------------------------- */
