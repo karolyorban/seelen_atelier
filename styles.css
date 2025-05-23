@@ -359,7 +359,6 @@ main {
 .workshop_booking_text {
     font-size: 1rem;
     margin-top: 2rem;
-    margin-bottom: 2rem;
 }
 
 .book_workshop {
@@ -367,7 +366,7 @@ main {
     width: fit-content;
     font-size: 1.15rem;
     display: block;
-    margin-top: 7vh;
+    margin-top: 4vh;
     border-radius: 7%;
     background-color: #5a4126;
     color: white;
@@ -406,6 +405,13 @@ main {
     padding: 40px 0;
     background-color: #f9f9f9;
     text-align: center;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(115, 79, 42, 0.1);
+    border-radius: 20px;
+}
+
+.testimonials-slider-container:hover {
+    box-shadow: 0 0 15px 1px rgba(115, 79, 42, 0.4);
 }
 
 .testimonials-intro {
@@ -439,10 +445,14 @@ main {
 }
 
 .testimonial {
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    top: 0;
+    margin-top: 10px;
     left: 0;
     width: 100%;
+    height: 100%;
+    justify-content: center;
     opacity: 0;
     transition: opacity 0.5s ease;
     padding: 0 20px;
@@ -620,6 +630,7 @@ mask-image: linear-gradient(
 
 .about_me_intro_text_end {
     display: flex;
+    flex-direction: column;
     padding: 2rem;
 }
 
@@ -628,6 +639,8 @@ mask-image: linear-gradient(
     height: 100%; /* Force fill container */
     object-fit: cover; /* Crop to fit (or 'contain' to show full image) */
     object-position: top;
+    margin-left: 2vw;
+    margin-top: 32px;
     border-radius: 40px;
     box-shadow: 0 0 40px 15px rgba(185, 134, 81, 0.6);
     position: absolute; /* Lets height:100% work */
