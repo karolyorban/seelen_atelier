@@ -402,7 +402,7 @@ main {
 }
 .testimonials-slider-container {
     margin-top: 60px;
-    padding: 40px 0;
+    padding: 40px 5ch;
     background-color: #f9f9f9;
     text-align: center;
     transition: all 0.5s ease;
@@ -612,40 +612,39 @@ mask-image: linear-gradient(
     display: flex;
     padding: 0 2rem;
     gap: 4rem;
-    align-items: flex-start;
-}
-
-.about_me_intro_text {
-    flex: 2; /* Takes 2x more space than image */
-    min-height: 100%; /* Ensure it fills parent if needed */
+    align-items: center;
+    justify-content: center;
 }
 
 .about_me_intro_pic {
+    display: flex; /* Added */
+    /*align-items: center;*/
     flex: 1; /* Takes 1x space */
     position: relative; /* Needed for absolute child */
     min-height: 100%; /* Fallback */
     width: 100%;
 }
 
-
-.about_me_intro_text_end {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-}
-
 .about_me_intro_pic img {
-    width: auto;
-    height: 100%; /* Force fill container */
+    width: 100%;
+    height: auto; /* Force fill container */
     object-fit: cover; /* Crop to fit (or 'contain' to show full image) */
     object-position: top;
     margin-left: 2vw;
     margin-top: 32px;
     border-radius: 40px;
     box-shadow: 0 0 40px 15px rgba(185, 134, 81, 0.6);
-    position: absolute; /* Lets height:100% work */
-    top: 0;
-    left: 0;
+}
+
+.about_me_intro_text {
+    flex: 3;
+    align-self: center;
+}
+
+.about_me_intro_text_end {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
 }
 
 .about_me_img_and_text {
