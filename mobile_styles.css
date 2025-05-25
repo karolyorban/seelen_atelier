@@ -1,0 +1,274 @@
+@media (max-width: 768px) {
+    /* General adjustments */
+    body {
+        font-size: 14px;
+        overflow-x: hidden;
+    }
+    
+    /* Header adjustments */
+    header {
+        height: auto;
+        flex-direction: column;
+        padding: 0.5rem 0;
+    }
+    
+    .header_pics {
+        height: auto;
+        padding: 0.5rem;
+    }
+    
+    .header_pics > img {
+        height: auto;
+        max-height: 80px;
+    }
+    
+    .sticky_menu {
+        margin-top: 0;
+        padding: 0.5rem 0;
+    }
+    
+    .sticky_menu ul {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+    
+    .sticky_menu a {
+        font-size: 1rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    /* Main content adjustments */
+    main {
+        padding-top: 120px; /* Adjusted for smaller header */
+        padding-bottom: 60px; /* Adjusted for smaller footer */
+    }
+    
+    /* Home section */
+    .home_section {
+        padding: 7vh 5vw 2vh 5vw;
+    }
+    
+    .top_content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .text_content {
+        padding: 2vh 0;
+        order: 1; /* Move text above image on mobile */
+    }
+    
+    .image_content {
+        order: 2;
+    }
+    
+    .image_content img {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+    
+    .home_section h1 {
+        font-size: 1.8rem;
+    }
+    
+    .home_section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .home_section h3 {
+        font-size: 1.4rem;
+    }
+    
+    .home_section p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    
+    .cta {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        margin: 1rem 0;
+    }
+    
+    /* Workshops section */
+    .workshops_section > div {
+        width: 90%;
+        padding: 3vh 2vh;
+    }
+    
+    .workshops {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .workshop_image, 
+    .workshop_text {
+        flex: none;
+        width: 100%;
+    }
+
+    .workshop_image img:hover {
+    transform: scale(1.04);
+    cursor: pointer;
+}
+    
+    .workshop_title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .workshop_subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .book_workshop {
+        margin: 2vh auto;
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* Testimonials slider */
+    .testimonials-slider-container {
+        padding: 20px 2ch;
+        margin-top: 30px;
+    }
+    
+    .testimonials-container {
+        height: 250px; /* More height for better text display */
+    }
+    
+    .testimonial blockquote {
+        font-size: 16px;
+    }
+    
+    /* About Seelen Atelier section */
+    .about_seelen_atelier_section {
+        padding: 12vh 5vw;
+    }
+    
+    .seelen_text_with_pic {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .seelen_pic {
+        max-width: 100%;
+        order: -1; /* Image first on mobile */
+    }
+
+    .seelen_pic img {
+        -webkit-mask-image: none;
+    }
+    
+    .about_seelen_atelier_section h1 {
+        font-size: 2rem;
+    }
+    
+    .about_seelen_atelier_section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .about_seelen_atelier_section h3 {
+        font-size: 1.5rem;
+    }
+    
+    .about_seelen_atelier_section p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    
+    /* About Me section */
+    .about_me_section {
+        flex-direction: column;
+    }
+    
+    .about_me_intro {
+        flex-direction: column;
+        margin-top: 10vh;
+    }
+
+    .about_me_img_and_text {
+        padding: 5vw;
+        left: 0;
+        width: 100%;
+    }
+
+    .about_me_img {
+        width: 70vw;
+        height: 70vw;
+    }
+    
+    /* Footer adjustments */
+    footer {
+        height: auto;
+        padding: 0.5rem;
+        flex-direction: column;
+        top: auto;
+        bottom: 0;
+    }
+    
+    footer > div {
+        width: 100%;
+        justify-content: center;
+        margin: 0.3rem 0;
+    }
+    
+    .name, .mail, .social_media, .footer_links {
+        justify-content: center;
+    }
+    
+    /* Impressum section */
+    .impressum {
+        padding: 6vh 5vw;
+    }
+
+    footer {
+        position: static; /* Change from fixed to static */
+        height: auto;
+        padding: 1rem 0;
+        flex-direction: column;
+    }
+    
+    main {
+        padding-bottom: 20px; /* Reduced padding since footer isn't fixed anymore */
+    }
+    
+    /* Ensure social media icons stay properly contained */
+    .social_media {
+        margin: 0.5rem 0;
+    }
+    
+    .social_media img {
+        max-height: 24px;
+    }
+    
+    /* Adjust footer layout */
+    footer > div {
+        margin: 0.5rem 0;
+        justify-content: center;
+    }
+
+    .mail img {
+        height: 24px; /* Fixed height matching other icons */
+        width: auto; /* Maintain aspect ratio */
+    }
+    
+    /* Adjust mail container to align properly */
+    .mail {
+        gap: 8px; /* Reduced gap for mobile */
+        align-items: center;
+    }
+    
+    /* Mail text size adjustment */
+    .mail a {
+        font-size: 0.9rem;
+    }
+    
+    /* Ensure all footer icons are consistent */
+    footer img {
+        max-height: 24px;
+        width: auto;
+    }
+       
+}

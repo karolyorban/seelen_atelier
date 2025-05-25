@@ -822,14 +822,6 @@ footer .social_media a {
 
 footer img {
     height: 100%;
-    filter: 
-        brightness(0)      /* First make the image black */
-        sepia(100%)        /* Convert to sepia tone */
-        saturate(1000%)    /* Increase saturation */
-        hue-rotate(335deg) /* Adjust to match #734f2a */
-        brightness(0.9)    /* Fine-tune lightness */
-        contrast(1.1);     /* Slightly boost contrast */
-    transition: filter 0.3s ease;
 }
 
 .footer_links {
