@@ -779,16 +779,12 @@ footer a {
     transition: all 0.5s ease;
 }
 
-footer a:hover {
-    color: #291d10;
-}
-
 .mail > a:hover {
     transform: scale(1.04);
 }
 
 .social_media > a:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
 .footer_links > a:hover {
@@ -818,6 +814,8 @@ footer .social_media {
 footer .social_media a {
     display: flex;
     height: 100%;
+    align-items: center;
+    gap: 1vw;
 }
 
 footer img {
