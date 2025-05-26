@@ -786,7 +786,8 @@ footer a {
 
 .mail a {
     display: flex;
-    align-items: center;
+    align-items: center;   
+    margin-left: 7vw;
     gap: 1vw;
 }
 
@@ -796,7 +797,7 @@ footer a {
 }
 
 .mail > a:hover {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
 
 .social_media > a:hover {
