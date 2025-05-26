@@ -87,28 +87,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Special handling for home section
     function showHomeSection(addToHistory) {
-        currentSection = 'home_section';
+    currentSection = 'home_section';
 
-        // Show all sections (since home might be first in flow)
-        contentSections.forEach(section => {
-            section.classList.remove('active');
-            section.style.display = 'flex'; // or 'block' depending on your layout
-        });
+    // Hide all sections first
+    contentSections.forEach(section => {
+        section.classList.remove('active');
+        section.style.display = 'none';
+    });
 
-        // Mark home as active
-        homeSection.classList.add('active');
+    // Show only the home section
+    homeSection.classList.add('active');
+    homeSection.style.display = 'flex'; // or 'block' depending on your layout
 
-        // Scroll to top
-        window.scrollTo({
-            top: 0,
-            behavior: config.scrollBehavior
-        });
+    // Scroll to top
+    window.scrollTo({
+        top: 0,
+        behavior: config.scrollBehavior
+    });
 
-        // Update history if needed
-        if (addToHistory && !isPopState) {
-            updateHistory('home_section');
-        }
+    // Update history if needed
+    if (addToHistory && !isPopState) {
+        updateHistory('home_section');
     }
+}
 
     // Scroll to a section with optional offset
     function scrollToSection(section) {

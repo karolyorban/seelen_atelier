@@ -98,8 +98,12 @@
     }
     
     .workshops {
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 1rem;
+    }
+
+    .workshops_section > .workshops:nth-child(even) {
+        flex-direction: column;
     }
     
     .workshop_image, 
@@ -235,15 +239,11 @@
     }
     
     /* Ensure social media icons stay properly contained */
-    .social_media {
-        margin: 0.5rem 0;
-    }
 
     .social_media a {
         display: flex;
         flex-direction: column-reverse; /* Stack vertically */
         align-items: center;   /* Center horizontally */
-        gap: 4px;              /* Space between image and text */
     }
     
     .social_media img {
@@ -255,22 +255,19 @@
         margin: 0.5rem 0;
         justify-content: center;
     }
-
-    .mail img {
-        height: 24px; /* Fixed height matching other icons */
-        width: auto; /* Maintain aspect ratio */
-    }
     
     /* Adjust mail container to align properly */
     .mail {
-        gap: 4px; /* Reduced gap for mobile */
+        gap: 8px; /* Reduced gap for mobile */
         align-items: center;
     }
-    
-    /* Mail text size adjustment */
+
     .mail a {
-        font-size: 0.9rem;
+        display: flex;
+        flex-direction: column-reverse;
     }
+
+
     
     /* Ensure all footer icons are consistent */
     footer img {

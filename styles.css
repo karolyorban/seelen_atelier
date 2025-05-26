@@ -780,6 +780,21 @@ footer a {
     transition: all 0.5s ease;
 }
 
+.mail {
+    gap: 1vw;
+}
+
+.mail a {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.mail > a img {
+    height: 2rem;        /* Match your original icon size */
+    width: auto;           /* Preserve aspect ratio */
+}
+
 .mail > a:hover {
     transform: scale(1.04);
 }
@@ -797,10 +812,6 @@ footer > div {
     align-items: center;
     height: 50%;
     font-size: 1rem;
-}
-
-.mail {
-    gap: 1vw;
 }
 
 .name {
