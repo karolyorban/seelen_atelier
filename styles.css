@@ -808,7 +808,10 @@ footer > div {
 }
 
 footer .social_media {
-    gap: 1vw;
+    flex: 1; /* Take up available space */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    padding: 0 4vw; /* Match your body's horizontal padding */
 }
 
 footer .social_media a {
@@ -816,6 +819,8 @@ footer .social_media a {
     height: 100%;
     align-items: center;
     gap: 1vw;
+    justify-content: center;
+    text-align: center;
 }
 
 footer img {
