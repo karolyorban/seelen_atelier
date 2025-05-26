@@ -256,7 +256,7 @@
     
     /* Adjust mail container to align properly */
     .mail {
-        gap: 8px; /* Reduced gap for mobile */
+        gap: 4px; /* Reduced gap for mobile */
         align-items: center;
     }
     
