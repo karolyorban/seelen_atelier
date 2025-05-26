@@ -764,6 +764,7 @@ footer {
     border-top: 1px solid #b98651;
     align-items: center;
     padding: 0 2vw 0 2vw;
+    gap: 2vw;
     justify-content: space-between;
     top: 93vh;
     width: 100%;
