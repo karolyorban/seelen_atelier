@@ -1,100 +1,196 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const contentLinks = document.querySelectorAll('.home_section a[href^="#"]'); // Select all anchor links in home section
-    const contentSections = document.querySelectorAll('.content-section');
-    let isPopState = false;
+    // Configuration
+    const config = {
+        defaultSection: 'home_section',
+        scrollOffset: document.querySelector('header')?.offsetHeight || 0,
+        scrollBehavior: 'smooth',
+        useHashInURL: false
+    };
 
-    // Initialize history on first load
-    if (!history.state) {
-        const initialSection = window.location.hash.substring(1) || 'home_section';
-        history.replaceState({ section: initialSection }, '', `#${initialSection}`);
+    // DOM Elements
+    const navLinks = document.querySelectorAll('.nav-link');
+    const contentLinks = document.querySelectorAll('a[href^="#"]'); // Select all anchor links
+    const contentSections = document.querySelectorAll('.content-section');
+    const header = document.querySelector('header');
+    const homeSection = document.getElementById('home_section');
+
+    // State management
+    let isPopState = false;
+    let currentSection = config.defaultSection;
+
+    // Initialize the page
+    function init() {
+        // Set up initial state
+        const initialSection = getInitialSection();
+        currentSection = initialSection;
+        
+        // Show the initial section
+        showSection(initialSection, false);
+        
+        // Set up event listeners
+        setupEventListeners();
+        
+        // Initialize scroll handler
+        setupScrollHandler();
     }
 
-    function showSection(targetId, addToHistory = true) {
-        // 1. FIRST, SCROLL TO TOP (before showing new section)
-        window.scrollTo({
-            top: 0,
-            behavior: 'auto'
-        });
+    // Determine the initial section to show
+    function getInitialSection() {
+        // Check for hash in URL first
+        if (window.location.hash) {
+            const hashSection = window.location.hash.substring(1);
+            if (document.getElementById(hashSection)) {
+                return hashSection;
+            }
+        }
+        
+        // Default to home section
+        return config.defaultSection;
+    }
 
-        // 2. Hide all sections
+    // Show a specific section
+    function showSection(targetId, addToHistory = true) {
+        // Special handling for home section
+        if (targetId === 'home_section') {
+            showHomeSection(addToHistory);
+            return;
+        }
+
+        // Validate target exists
+        const targetSection = document.getElementById(targetId);
+        if (!targetSection) {
+            console.warn(`Section with ID ${targetId} not found`);
+            return;
+        }
+
+        // Update current section
+        currentSection = targetId;
+
+        // Hide all sections first
         contentSections.forEach(section => {
             section.classList.remove('active');
             section.style.display = 'none';
         });
 
-        // 3. Show the target section
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-            targetSection.style.display = 'flex';
+        // Show the target section
+        targetSection.classList.add('active');
+        targetSection.style.display = 'flex';
 
-            // 4. Optional: Scroll to section (after top jump)
-            const headerHeight = document.querySelector('header').offsetHeight;
-            setTimeout(() => {
-                window.scrollTo({
-                    top: targetSection.offsetTop - headerHeight,
-                    behavior: 'auto'
-                });
-            }, 10);
-        }
+        // Scroll to section
+        scrollToSection(targetSection);
 
-        // 5. Update history
+        // Update history if needed
         if (addToHistory && !isPopState) {
-            history.pushState({ section: targetId }, '', `#${targetId}`);
+            updateHistory(targetId);
         }
     }
 
-    // Initial load handling
-    function handleInitialLoad() {
-        const targetId = history.state?.section || 'home_section';
-        showSection(targetId, false);
-        
-        // Force scroll to top if no hash in URL
-        if (!window.location.hash) {
-            window.scrollTo(0, 0);
+    // Special handling for home section
+    function showHomeSection(addToHistory) {
+        currentSection = 'home_section';
+
+        // Show all sections (since home might be first in flow)
+        contentSections.forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'flex'; // or 'block' depending on your layout
+        });
+
+        // Mark home as active
+        homeSection.classList.add('active');
+
+        // Scroll to top
+        window.scrollTo({
+            top: 0,
+            behavior: config.scrollBehavior
+        });
+
+        // Update history if needed
+        if (addToHistory && !isPopState) {
+            updateHistory('home_section');
         }
     }
 
-    // Navigation link click handlers (both menu and content links)
+    // Scroll to a section with optional offset
+    function scrollToSection(section) {
+        // First scroll to top to ensure consistent behavior
+        window.scrollTo({
+            top: 0,
+            behavior: 'auto'
+        });
+
+        // Then scroll to the section
+        setTimeout(() => {
+            const targetPosition = section.offsetTop - config.scrollOffset;
+            window.scrollTo({
+                top: targetPosition > 0 ? targetPosition : 0,
+                behavior: config.scrollBehavior
+            });
+        }, 10);
+    }
+
+    // Update browser history
+    function updateHistory(sectionId) {
+        if (config.useHashInURL) {
+            history.pushState({ section: sectionId }, '', `#${sectionId}`);
+        } else {
+            history.pushState({ section: sectionId }, '', window.location.pathname);
+        }
+    }
+
+    // Handle link clicks
     function handleLinkClick(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
-        showSection(targetId);
+        
+        // Only proceed if this is a valid section link
+        if (targetId === 'home_section' || document.getElementById(targetId)) {
+            showSection(targetId);
+        }
     }
 
-    // Add event listeners to menu links
-    navLinks.forEach(link => {
-        link.addEventListener('click', handleLinkClick);
-    });
-
-    // Add event listeners to content links in home section
-    contentLinks.forEach(link => {
-        // Only add if the link points to one of our sections
-        const targetId = link.getAttribute('href').substring(1);
-        if (document.getElementById(targetId)) {
-            link.addEventListener('click', handleLinkClick);
-        }
-    });
-
-    // Handle browser back/forward buttons
-    window.addEventListener('popstate', function(e) {
+    // Handle popstate (back/forward navigation)
+    function handlePopState(e) {
         isPopState = true;
-        const targetId = e.state?.section || 'home_section';
+        const targetId = e.state?.section || config.defaultSection;
         showSection(targetId, false);
         isPopState = false;
-    });
+    }
 
-    // Add scroll detection for header line
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
+    // Handle scroll events for header styling
+    function handleScroll() {
         if (window.scrollY > 5) {
-            header.classList.add('scrolled');
+            header?.classList.add('scrolled');
         } else {
-            header.classList.remove('scrolled');
+            header?.classList.remove('scrolled');
         }
-    });
+    }
 
-    // Use setTimeout to ensure DOM is fully ready
-    setTimeout(handleInitialLoad, 0);
+    // Set up all event listeners
+    function setupEventListeners() {
+        // Navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', handleLinkClick);
+        });
+
+        // All anchor links
+        contentLinks.forEach(link => {
+            const targetId = link.getAttribute('href').substring(1);
+            if (targetId === 'home_section' || document.getElementById(targetId)) {
+                link.addEventListener('click', handleLinkClick);
+            }
+        });
+
+        // Browser navigation
+        window.addEventListener('popstate', handlePopState);
+    }
+
+    // Set up scroll handler
+    function setupScrollHandler() {
+        window.addEventListener('scroll', handleScroll);
+        // Trigger once to set initial state
+        handleScroll();
+    }
+
+    // Start the application
+    init();
 });

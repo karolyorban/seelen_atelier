@@ -135,7 +135,7 @@
     }
     
     .testimonials-container {
-        height: 250px; /* More height for better text display */
+        height: 450px; /* More height for better text display */
     }
     
     .testimonial blockquote {
@@ -237,6 +237,13 @@
     /* Ensure social media icons stay properly contained */
     .social_media {
         margin: 0.5rem 0;
+    }
+
+    .social_media a {
+        display: flex;
+        flex-direction: column-reverse; /* Stack vertically */
+        align-items: center;   /* Center horizontally */
+        gap: 4px;              /* Space between image and text */
     }
     
     .social_media img {
