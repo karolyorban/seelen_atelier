@@ -1,5 +1,8 @@
 @media (max-width: 768px) {
     /* General adjustments */
+    * {
+        overflow-x: hidden;
+    }
     body {
         font-size: 14px;
         overflow-x: hidden;
@@ -46,7 +49,7 @@
     
     /* Home section */
     .home_section {
-        padding: 12vh 5vw 2vh 5vw;
+        padding: 26vh 5vw 2vh 5vw;
     }
     
     .top_content {
@@ -66,13 +69,23 @@
     .image_content img {
         -webkit-mask-image: none;
         mask-image: none;
+        width: 165%;
+        object-fit: cover;
+        object-position: left top;
     }
     
     .home_section h1 {
+        position: absolute;
+        top: 23.5vh;
+        text-align: center;
         font-size: 1.8rem;
     }
     
     .home_section h2 {
+        position: absolute;
+        top: 42vh;
+        margin-right: 50vw;
+        text-align: center;
         font-size: 1.3rem;
     }
     
@@ -86,9 +99,12 @@
     }
     
     .cta {
+        position: absolute;
+        top: 80vh;
+        width: 70vw;
+        left: 15vw;
         font-size: 1rem;
         padding: 0.5rem 1rem;
-        margin: 1rem 0;
     }
     
     /* Workshops section */
