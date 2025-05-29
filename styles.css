@@ -766,9 +766,9 @@ footer {
     padding: 0 2vw 0 2vw;
     gap: 2vw;
     justify-content: space-between;
-    top: 93vh;
+    bottom: 0;
     width: 100%;
-    height: 7vh;
+    min-height: 7vh;
     background-color: rgb(229, 188, 143);
     z-index: 1;
 }
@@ -800,10 +800,6 @@ footer a {
     transform: scale(1.05);
 }
 
-.social_media > a:hover {
-    transform: scale(1.05);
-}
-
 .footer_links > a:hover {
     transform: scale(1.05);
 }
@@ -820,20 +816,28 @@ footer > div {
     color: #5a4126;
 }
 
-footer .social_media {
+.social_media {
     flex: 1; /* Take up available space */
     display: flex;
     justify-content: center; /* Center the content horizontally */
     padding: 0 4vw; /* Match your body's horizontal padding */
 }
 
-footer .social_media a {
+.social_media > a:hover {
+    transform: scale(1.05);
+}
+
+.social_media a {
     display: flex;
     height: 100%;
     align-items: center;
     gap: 1vw;
     justify-content: center;
     text-align: center;
+}
+
+.social_media img {
+    height: 2rem;
 }
 
 footer img {
