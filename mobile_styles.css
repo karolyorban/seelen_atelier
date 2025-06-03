@@ -44,7 +44,7 @@
     /* Main content adjustments */
     main {
         padding-top: 120px; /* Adjusted for smaller header */
-        padding-bottom: 60px; /* Adjusted for smaller footer */
+        padding-bottom: 20px;
     }
     
     /* Home section */
@@ -258,10 +258,6 @@
         flex-direction: column;
     }
     
-    main {
-        padding-bottom: 20px; /* Reduced padding since footer isn't fixed anymore */
-    }
-    
     /* Ensure social media icons stay properly contained */
 
     .social_media a {
@@ -278,6 +274,7 @@
     footer > div {
         margin: 0.5rem 0;
         justify-content: center;
+        width: 100%;
     }
     
     /* Adjust mail container to align properly */
@@ -289,6 +286,7 @@
     .mail a {
         display: flex;
         flex-direction: column-reverse;
+        margin-left: 0;
     }
 
 
