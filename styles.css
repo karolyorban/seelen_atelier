@@ -213,6 +213,7 @@ main {
     text-decoration: none; /* Remove underline */
     box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 /* Keep your existing hover effects */
