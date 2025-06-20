@@ -296,6 +296,12 @@ main {
     background-color: rgba(229, 188, 143, 0.1);
     border: 1px solid rgba(115, 79, 42, 0.1);
     border-radius: 20px;
+    flex-direction: row;
+}
+
+
+.workshops_section > .workshops:nth-child(odd) {
+    flex-direction: row-reverse;   
 }
 
 .workshops:hover {
